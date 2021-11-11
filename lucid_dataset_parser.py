@@ -367,6 +367,8 @@ def dataset_to_list_of_fragments(dataset):
 def train_test_split(flow_list,train_size=TRAIN_SIZE, shuffle=True):
     test_list = []
     _,(total_examples,_,_) = count_flows(flow_list)
+    print("total_example:", total_examples)
+    print("train_size:",train_size)
     test_examples = total_examples - total_examples*train_size
 
     if shuffle == True:
@@ -377,6 +379,7 @@ def train_test_split(flow_list,train_size=TRAIN_SIZE, shuffle=True):
         flow = flow_list.pop(0)
         test_list.append(flow)
         current_test_examples += len(flow[1])-1
+        print("current_test_example:", current_test_examples)
 
 
     return flow_list,test_list
