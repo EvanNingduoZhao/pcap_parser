@@ -562,9 +562,12 @@ def main(argv):
         preprocessed_train, preprocessed_test = train_test_split(preprocessed_flows,train_size=TRAIN_SIZE, shuffle=True)
         preprocessed_train, preprocessed_val = train_test_split(preprocessed_train, train_size=TRAIN_SIZE, shuffle=True)
 
+        print("preprocessd_train: ", preprocessed_train)
         X_train, y_train, _ = dataset_to_list_of_fragments(preprocessed_train)
         X_val, y_val, _ = dataset_to_list_of_fragments(preprocessed_val)
         X_test, y_test, _ = dataset_to_list_of_fragments(preprocessed_test)
+
+        print("X_train: ", X_train)
 
         # normalization and padding
         X_full = X_train + X_val + X_test
@@ -593,6 +596,7 @@ def main(argv):
                          ") | options:" + command_options + " |\n"
         else:
             norm_X_train = normalize_and_padding(X_train,mins,maxs,max_flow_len)
+            print("norm_X_train: ",norm_X_train)
             norm_X_val = normalize_and_padding(X_val, mins, maxs, max_flow_len)
             norm_X_test = normalize_and_padding(X_test, mins, maxs, max_flow_len)
 
