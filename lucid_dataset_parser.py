@@ -618,10 +618,11 @@ def main(argv):
             hf.create_dataset('set_y', data=y_test_np)
             hf.close()
 
-            [train_packets, val_packets, test_packets] = count_packets_in_dataset([norm_X_train_np, norm_X_val_np, norm_X_test_np])
             print("norm_X_train_np: ", norm_X_train_np)
             print("norm_X_val_np: ", norm_X_val_np)
             print("norm_X_test_np: ", norm_X_test_np)
+            print("[norm_X_train_np, norm_X_val_np, norm_X_test_np]: ",[norm_X_train_np, norm_X_val_np, norm_X_test_np])
+            [train_packets, val_packets, test_packets] = count_packets_in_dataset([norm_X_train_np, norm_X_val_np, norm_X_test_np])
             log_string = time.strftime("%Y-%m-%d %H:%M:%S") + " | examples (tot,ben,ddos):(" + str(total_examples) + "," + str(total_benign_examples) + "," + str(total_ddos_examples) + \
                          ") | Train/Val/Test sizes: (" + str(norm_X_train_np.shape[0]) + "," + str(norm_X_val_np.shape[0]) + "," + str(norm_X_test_np.shape[0]) + \
                          ") | Packets (train,val,test):(" + str(train_packets) + "," + str(val_packets) + "," + str(test_packets) + \
